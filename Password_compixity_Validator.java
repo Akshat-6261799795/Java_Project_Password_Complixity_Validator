@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 class UserAccount{
 
     private String username;
@@ -50,7 +52,15 @@ class SecurityValidator{
 public class Password_compixity_Validator{
     public static void main(String[] args){
         
-        UserAccount user = new UserAccount("Ajay", "1324567890");
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.print("Enter username: ");
+        String username = sc.nextLine();
+        
+        System.out.print("Enter password: ");
+        String password = sc.nextLine();
+        
+        UserAccount user = new UserAccount(username, password);
 
         SecurityValidator validator = new SecurityValidator();
         boolean isValid = validator.isValid(user);
@@ -61,5 +71,7 @@ public class Password_compixity_Validator{
         else{
             System.out.println("Password is invalid.");
         }
+        
+        sc.close();
     }
 }
