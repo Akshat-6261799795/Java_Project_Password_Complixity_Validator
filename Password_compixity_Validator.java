@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+// Simple container for the user's login credentials.
 class UserAccount{
 
     private String username;
@@ -24,6 +25,7 @@ class SecurityValidator{
 
         String password = user.getPassword();
 
+        // Password must be at least 8 characters long.
         if (password.length() < 8){
             return false;
         }
@@ -31,11 +33,14 @@ class SecurityValidator{
         boolean hasDigit = false;
         boolean hasUpper = false;
 
+        // Check each character for a digit and an uppercase letter.
         for (int i = 0; i < password.length(); i++){
             char ch = password.charAt(i);
+            // Character.isDigit checks whether the character is a numeric digit.
             if (Character.isDigit(ch)){
                 hasDigit = true;
             }
+            // Character.isUpperCase checks whether the character is an uppercase letter.
             if (Character.isUpperCase(ch)){
                 hasUpper = true;
             }
@@ -49,18 +54,22 @@ class SecurityValidator{
     }
 }
 
+// Main entry point for prompting the user and validating the password.
+
 public class Password_compixity_Validator{
     public static void main(String[] args){
         
+        // Create a Scanner to read text input from the user.
         Scanner sc = new Scanner(System.in);
         
+        // Read username and password from the console.
         System.out.print("Enter username: ");
         String username = sc.nextLine();
         
         System.out.print("Enter password: ");
         String password = sc.nextLine();
         
-        UserAccount user = new UserAccount(username, password);
+        UserAccount user = new UserAccount(username, password);     
 
         SecurityValidator validator = new SecurityValidator();
         boolean isValid = validator.isValid(user);
@@ -72,6 +81,7 @@ public class Password_compixity_Validator{
             System.out.println("Password is invalid.");
         }
         
+        // Close the Scanner to release the underlying input stream.
         sc.close();
     }
 }
