@@ -74,11 +74,17 @@ public class Password_compixity_Validator{
         SecurityValidator validator = new SecurityValidator();
         boolean isValid = validator.isValid(user);
 
-        if (isValid){
-            System.out.println("Password is valid.");
-        }
-        else{
-            System.out.println("Password is invalid.");
+        String validity = isValid ? "valid" : "invalid";
+        switch (validity) {
+            case "valid":
+                System.out.println("Password is valid.");
+                break;
+            case "invalid":
+                System.out.println("Password is invalid.");
+                break;
+            default:
+                System.out.println("Password validation result unknown.");
+                break;
         }
         
         // Close the Scanner to release the underlying input stream.
